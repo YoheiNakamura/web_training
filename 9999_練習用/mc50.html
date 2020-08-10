@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+    <div id="global-container">
+        <div id="container">
+            <div class="mobile-menu__cover"></div>
+            <header class="header">
+                <div class="header__inner">
+                    <div class="logo">
+                        <img src="images/n.png" alt="" class="logo__img">
+                        <span class="logo__text">N team</span>
+                    </div>
+                    <nav class="header__nav">
+                        <ul class="header__ul">
+                            <li class="header__li"><a href="sample.html">Link1</a></li>
+                            <li class="header__li"><a href="lp.html">Link2</a></li>
+                            <li class="header__li"><a href="#">Link3</a></li>
+                        </ul>
+                    </nav>
+                    <button class="mobile-menu__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+            <div class="main-contents">
+                <div id="modal">
+                    <modal-image v-if="showModal == true" @close="showModal = false" :key="1">
+                        <img src="images/1_1_C.png" class="modal-full-image" slot="body">
+                    </modal-image>
+                    <article>
+                        <ul class="mc50-list">
+                            <li>
+                                <div class="hover-darken" @click="showModal = true">
+                                    <p class="ranking">1位</p>
+                                    <img src="images/1_1_C.png">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hover-darken" @click="showModal = true">
+                                    <p class="ranking">2位</p>
+                                    <img src="images/1_1_C.png">
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div><!--modal-->
+                <script type="text/x-template" id="modal-image-template">
+                    <transition name="modal-image">
+                        <div class="modal-mask">
+                            <div class="modal-wrapper" @click.self="$emit('close')">
+                                <div class="modal-image-container">
+                                    <slot name="body"></slot>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </script>
+            </div>
+        </div>
+        <nav class="mobile-menu">
+            <div class="logo">
+                <img src="images/n.png" alt="" class="logo__img">
+                <span class="logo__text">N team</span>
+            </div>
+            <ul class="mobile-menu__main">
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">気づき・ネタ案</span>
+                    <span class="sub-title">気づきを入力しましょう</span>
+                </a>
+                </li>
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">他流試合</span>
+                    <span class="sub-title">いっぱい出場して楽しみましょう</span>
+                </a>
+                </li>
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">推進委員会</span>
+                    <span class="sub-title">叩き上げてBUしまくります</span>
+                </a>
+                </li>
+            </ul>
+        
+        </nav>
+    </div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/modal.js"></script>
+</body>
+</html>

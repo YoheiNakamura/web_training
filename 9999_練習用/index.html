@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
@@ -18,8 +19,8 @@
                     </div>
                     <nav class="header__nav">
                         <ul class="header__ul">
-                            <li class="header__li"><a href="#">Link1</a></li>
-                            <li class="header__li"><a href="#">Link2</a></li>
+                            <li class="header__li"><a href="sample.html">Link1</a></li>
+                            <li class="header__li"><a href="lp.html">Link2</a></li>
                             <li class="header__li"><a href="#">Link3</a></li>
                         </ul>
                     </nav>
@@ -30,6 +31,71 @@
                     </button>
                 </div>
             </header>
+            <div class="main-contents">
+                <div id="modal">
+                    <button class="custom-button" @click="showModal = true">imageを開く</button>
+                        <article>
+                            <ul class="item-list">
+                                <li>
+                                    <a href="lp.html" class="hover-darken">
+                                        <img src="images/1_1_C.png">
+                                        <p class="title">快適なながおかライフのために私は頑張ります。</p>
+                                        <p class="tag">カテゴリ：運営</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lp.html" class="hover-darken">
+                                        <img src="images/1_1_C.png">
+                                        <p class="title">快適なながおかライフのために</p>
+                                        <p class="tag">カテゴリ：運営</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lp.html" class="hover-darken">
+                                        <div class="fig">
+                                            <img src="images/1_1_C.png" class="thumbnail">
+                                        </div>
+                                        <div class="summary">
+                                            <p class="title">快適なながおかライフのために</p>
+                                            <p class="tag">カテゴリ：MC1</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lp.html">
+                                        <p class="tag">運営</p>
+                                        <div class="fig">
+                                            <p class="thumbnail">
+                                                <img src="images/1_1_C.png" alt="">
+                                            </p>
+                                        </div>
+                                        <div class="summary">
+                                            <p class="title">快適なながおかライフのために</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="lp.html">
+                                        <p class="tag">運営</p>
+                                        <div class="fig">
+                                            <p class="thumbnail">
+                                                <img src="images/1_1_C.png" alt="">
+                                            </p>
+                                        </div>
+                                        <div class="summary">
+                                            <p class="title">快適なながおかライフのために</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </article>
+                    <modal-image v-if="showModal == 'true'" @close="showModal = false">
+                        <div slot="body">
+                            <img src="images/caffeine.jpg" class="modal-full-image">
+                        </div>
+                    </modal-image>
+                </div><!--modal-->
+            </div>
         </div>
         <nav class="mobile-menu">
             <div class="logo">
@@ -59,6 +125,19 @@
         
         </nav>
     </div>
-    <script src="scripts/main.js"></script>
+    <script type="text/x-template" id="modal-image-template">
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper" @click.self="$emit('close')">
+                    <div class="modal-image-container">
+                        <slot name="body"></slot>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </script>
+     
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/modal.js"></script>
 </body>
 </html>
