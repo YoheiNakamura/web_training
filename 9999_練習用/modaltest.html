@@ -6,54 +6,80 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
+    <div id="sample">
+      <img src="images/1_1_C.png" v-on:click="openModal" id="test">
+      <open-modal v-show="show" v-on:from-child="closeModal">
+          slotからモーダルウィンドウへ
+        </open-modal>
+    </div>
+
+    <script type="text/x-template" id="sample-template">
+        <transition name="fade">
+          <div class="modal-mask">
+            <div class="modal-wrapper" v-on:click.self="clickEvent">
+              <div class="modal">
+                <slot name="body"></slot>
+                <button v-on:click="clickEvent">close</button>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </script>
+
+
     <div id="modal">
-        <p>クリックするとモーダルを開きます</p>
-        <button class="custom-button" @click="showModal = 1">1を開く</button>
-        <button class="custom-button" @click="showModal = 2">imageを開く</button>
-     
-        <!--モーダルの中身-->
-        <modal v-if="showModal == '1'" @close="showModal = false" :key="1">
-            <!--< h3 slot="header">ウィンドウ1</h3>-->
-            <div slot="body">
-                <img src="images/creating.jpg" alt="">
-            </div>
-        </modal>
-        <modal-image v-if="showModal == '2'" @close="showModal = false" :key="2">
-            <div slot="body">
-                <img src="images/caffeine.jpg" class="modal-full-image">
-            </div>
-        </modal-image>
-    </div><!--modal-->
-     
-     
+      <p>クリックするとモーダルを開きます</p>
+      <button class="custom-button" @click="showModal = 1">1を開く</button>
+      <button class="custom-button" @click="showModal = 2">imageを開く</button>
+
+      <!--モーダルの中身-->
+      <modal v-if="showModal == '1'" @close="showModal = false" :key="1">
+        <!--< h3 slot="header">ウィンドウ1</h3>-->
+        <div slot="body">
+          <img src="images/creating.jpg" alt="" />
+        </div>
+      </modal>
+      <modal-image v-if="showModal == '2'" @close="showModal = false" :key="2">
+        <div slot="body">
+          <img src="images/caffeine.jpg" class="modal-full-image" />
+        </div>
+      </modal-image>
+      <modal-image v-if="showModal == '3'" @close="showModal = false" :key="3">
+        <div slot="body">
+          <img src="images/caffeine.jpg" class="modal-full-image" />
+        </div>
+      </modal-image>
+    </div>
+    <!--modal-->
+
     <!--モーダルの中身のテンプレート-->
     <script type="text/x-template" id="modal-template">
-        <transition name="modal">
-            <div class="modal-mask">
-                <div class="modal-wrapper" @click.self="$emit('close')">
-                    <div class="modal-container">
-                        <div class="modal-header">
-                            <slot name="header"></slot>
-                        </div>
-                        <div class="modal-body">
-                            <slot name="body"></slot>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </transition>
+      <transition name="modal">
+          <div class="modal-mask">
+              <div class="modal-wrapper" @click.self="$emit('close')">
+                  <div class="modal-container">
+                      <div class="modal-header">
+                          <slot name="header"></slot>
+                      </div>
+                      <div class="modal-body">
+                          <slot name="body"></slot>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </transition>
     </script>
     <script type="text/x-template" id="modal-image-template">
-        <transition name="modal-image">
-            <div class="modal-mask">
-                <div class="modal-wrapper" @click.self="$emit('close')">
-                    <div class="modal-image-container">
-                        <slot name="body"></slot>
-                    </div>
-                </div>
-            </div>
-        </transition>
+      <transition name="modal-image">
+          <div class="modal-mask">
+              <div class="modal-wrapper" @click.self="$emit('close')">
+                  <div class="modal-image-container">
+                      <slot name="body"></slot>
+                  </div>
+              </div>
+          </div>
+      </transition>
     </script>
     <script src="./scripts/modal.js"></script>
-    </body>
+  </body>
 </html>

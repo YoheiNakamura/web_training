@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+    <div id="global-container">
+        <div id="container">
+            <div class="mobile-menu__cover"></div>
+            <header class="header">
+                <div class="header__inner">
+                    <div class="logo">
+                        <img src="images/n.png" alt="" class="logo__img">
+                        <span class="logo__text">N team</span>
+                    </div>
+                    <nav class="header__nav">
+                        <ul class="header__ul">
+                            <li class="header__li"><a href="sample.html">Link1</a></li>
+                            <li class="header__li"><a href="lp.html">Link2</a></li>
+                            <li class="header__li"><a href="#">Link3</a></li>
+                        </ul>
+                    </nav>
+                    <button class="mobile-menu__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </header>
+            <div class="main-contents">
+                <div class="sidebar">
+                    <div class="sidebar__dummy-space__1"></div>
+                    <h2>スレッド一覧</h2>
+                    <hr>
+                    <div id="thread-modal" class="btn-wrap">
+                        <button class="new-thread-btn" v-on:click="openModal">新しいスレッド</button>
+                        <thread-modal v-show="showModal" v-on:from-child="closeModal"></thread-modal>
+                    </div>
+                    <div class="team-thread-list">
+                        <h3>チーム</h3>
+                        <ul>
+                            <li>
+                                <a href="#">Common</a>
+                            </li>
+                            <li>
+                                <a href="#">N team</a>
+                            </li>
+                            <li>
+                                <a href="#">近藤X</a>
+                            </li>
+                            <li>
+                                <a href="#">D team</a>
+                            </li>
+                            <li>
+                                <a href="#">藤田班</a>
+                            </li>
+                            <li>
+                                <a href="#">棒棒鶏</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__dummy-space__2"></div>
+                    <div class="thread-list">
+                        <h3>全体</h3>
+                        <ul>
+                            <li>
+                                <a href="#">2020年9月交流戦</a>
+                            </li>
+                            <li>
+                                <a href="#">2020年10月推進委員会</a>
+                            </li>
+                            <li>
+                                <a href="#">2020年11月推進委員会</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main">
+                    <h1>2020年11月推進委員会</h1>
+                    <div id="item-modal" class="item-btn-wrap">
+                        <button class="new-item-btn" v-on:click="openModal">ネタを追加する</button>
+                        <item-modal v-show="showModal" v-on:from-child="closeModal"></item-modal>
+                    </div>
+                    <ul class="mc50-list" id="items">
+                        <li>
+                            <div class="hover-darken hover-darken-event" @click="showModal = true">
+                                <p class="ranking">1位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hover-darken" @click="showModal = true">
+                                <p class="ranking">2位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hover-darken" @click="showModal = true">
+                                <p class="ranking">1位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hover-darken" @click="showModal = true">
+                                <p class="ranking">2位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hover-darken" @click="showModal = true">
+                                <p class="ranking">1位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hover-darken" @click="showModal = true">
+                                <p class="ranking">2位</p>
+                                <img src="images/1_1_C.png">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/x-template" id="modal-template">
+                <transition name="modal">
+                    <div class="modal-mask">
+                        <div class="modal-wrapper" @click.self="$emit('close')">
+                            <div class="modal-container">
+                                <div class="modal-header">
+                                    <slot name="header"></slot>
+                                </div>
+                                <div class="modal-body">
+                                    <slot name="body"></slot>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+              </script>
+              <script type="text/x-template" id="thread-modal-template">
+                <transition name="modal">
+                    <div class="modal-mask">
+                        <div class="modal-wrapper" v-on:click.self="clickEvent">
+                            <div class="thread-modal-container">
+                                <h2>（まだ使わないでください）</h2>
+                                <form method="POST" action="#">
+                                    <input type="text" name="title" class="title-input">
+                                    <div class="thread-submit-btn-wrap">
+                                        <input type="submit" value="作成" class="thread-submit-btn">
+                                    </div>
+                                  </form>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+            </script>
+            <script type="text/x-template" id="item-modal-template">
+                <transition name="modal">
+                    <div class="modal-mask">
+                        <div class="modal-wrapper" v-on:click.self="clickEvent">
+                            <div class="item-modal-container">
+                                <h1>ネタを追加する</h1>
+                                <form method="POST" action="#">
+                                    <h3>タイトル</h3>
+                                    <input type="text" name="title" class="title-input">
+                                    <h3>カテゴリ</h3>
+                                    <select name="example">
+                                        <option>サンプル1</option>
+                                        <option>サンプル2</option>
+                                        <option>サンプル3</option>
+                                    </select>
+                                    <h3>画像</h3>
+                                    <p><input type="file" name="image" class="file-select"></p>
+                                    <div class="item-submit-btn-wrap">
+                                        <input type="submit" value="作成" class="item-submit-btn">
+                                    </div>
+                                  </form>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+            </script>
+        </div>
+        <nav class="mobile-menu">
+            <div class="logo">
+                <img src="images/n.png" alt="" class="logo__img">
+                <span class="logo__text">N team</span>
+            </div>
+            <ul class="mobile-menu__main">
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">気づき・ネタ案</span>
+                    <span class="sub-title">気づきを入力しましょう</span>
+                </a>
+                </li>
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">他流試合</span>
+                    <span class="sub-title">いっぱい出場して楽しみましょう</span>
+                </a>
+                </li>
+                <li class="mobile-menu__item">
+                <a class="mobile-menu__link" href="#">
+                    <span class="main-title">推進委員会</span>
+                    <span class="sub-title">叩き上げてBUしまくります</span>
+                </a>
+                </li>
+            </ul>
+        
+        </nav>
+    </div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/modal.js"></script>
+</body>
+</html>
