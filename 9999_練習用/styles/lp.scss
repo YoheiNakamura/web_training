@@ -1,0 +1,375 @@
+.image {
+  position: relative;
+  color: black;
+  font-family: serif;
+
+  & img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+  }
+
+  &__button-1 {
+    position: absolute;
+    top: calc(10%);
+    right: calc(10%);
+    opacity: 0;
+    font-family: serif;
+    font-size: 32px;
+    z-index: 10;
+  }
+  &__button-2 {
+    position: absolute;
+    top: calc(30%);
+    left: calc(10%);
+    opacity: 0;
+    font-family: serif;
+    font-size: 32px;
+    z-index: 10;
+  }
+  &__button-3 {
+    position: absolute;
+    bottom: calc(30%);
+    left: calc(70%);
+    opacity: 0;
+    font-family: serif;
+    font-size: 32px;
+    z-index: 10;
+  }
+
+  &__text-1-1 {
+    position: absolute;
+    width: 100%;
+    top: calc(5%);
+    text-align: center;
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-1-2 {
+    position: absolute;
+    width: 100%;
+    bottom: calc(20%);
+    text-align: center;
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-2-1 {
+    position: absolute;
+    width: 100%;
+    bottom: calc(25%);
+    left: calc(10%);
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-2-2 {
+    position: absolute;
+    width: 100%;
+    bottom: calc(20%);
+    left: calc(15%);
+    font-size: 32px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-3-1 {
+    position: absolute;
+    width: 100%;
+    color: white;
+    top: calc(40%);
+    left: calc(10%);
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-4-1 {
+    position: absolute;
+    width: 100%;
+    color: white;
+    bottom: calc(10%);
+    left: calc(70%);
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__text-5-1 {
+    position: absolute;
+    width: 100%;
+    top: calc(30%);
+    left: calc(10%);
+    font-size: 40px;
+    z-index: 10;
+    opacity: 0;
+  }
+}
+
+.slide-btn {
+  width: auto;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 2%;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.slide-bg {
+      overflow: hidden;
+      z-index: 100;
+      
+      & span {
+         display: inline-block;
+         width: 100%;
+         height: 100%;
+         background-color: black;
+         position: absolute;
+         top: 0;
+         left: 0;
+         transform: translateX(-100%);
+         transition: transform 0.3s;
+         z-index: -1;
+      }
+
+      &:hover {
+          color: white;
+          border: 1px solid white;
+
+          & span {
+              transform: none;
+          }
+      }
+  }
+}
+
+@media screen and(max-width: 1280px) {
+  .image {
+
+    &__button-1 {
+      font-size: 24px;
+    }
+    &__button-2 {
+      font-size: 24px;
+    }
+    &__button-3 {
+      font-size: 24px;
+    }
+
+    &__text-1-1 {
+      font-size: 28px;
+    }
+
+    &__text-1-2 {
+      font-size: 28px;
+    }
+
+    &__text-2-1 {
+      font-size: 28px;
+    }
+
+    &__text-2-2 {
+      font-size: 24px;
+    }
+
+    &__text-3-1 {
+      font-size: 28px
+    }
+
+    &__text-4-1 {
+      font-size: 28px
+    }
+
+    &__text-5-1 {
+      font-size: 28px
+    }
+  }
+}
+
+
+@media screen and(max-width: 960px) {
+  .image {
+
+    &__button-1 {
+      font-size: 20px;
+    }
+    &__button-2 {
+      font-size: 20px;
+    }
+    &__button-3 {
+      font-size: 20px;
+    }
+
+    &__text-1-1 {
+      font-size: 24px;
+    }
+
+    &__text-1-2 {
+      font-size: 24px;
+    }
+
+    &__text-2-1 {
+      font-size: 24px;
+    }
+
+    &__text-2-2 {
+      font-size: 20px;
+    }
+
+    &__text-3-1 {
+      font-size: 24px
+    }
+
+    &__text-4-1 {
+      font-size: 24px
+    }
+
+    &__text-5-1 {
+      font-size: 24px
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .image {
+
+    &__button-1 {
+      font-size: 16px;
+    }
+    &__button-2 {
+      font-size: 16px;
+    }
+    &__button-3 {
+      font-size: 16px;
+    }
+
+    &__text-1-1 {
+      font-size: 18px;
+    }
+
+    &__text-1-2 {
+      font-size: 18px;
+    }
+
+    &__text-2-1 {
+      font-size: 18px;
+    }
+
+    &__text-2-2 {
+      font-size: 14px;
+    }
+
+    &__text-3-1 {
+      font-size: 18px
+    }
+
+    &__text-4-1 {
+      font-size: 18px
+    }
+
+    &__text-5-1 {
+      font-size: 18px
+    }
+  }
+}
+
+
+@media screen and(max-width: 480px) {
+
+  .image {
+
+    &__button-1 {
+      font-size: 10px;
+    }
+    &__button-2 {
+      font-size: 10px;
+    }
+    &__button-3 {
+      font-size: 10px;
+    }
+
+    &__text-1-1 {
+      font-size: 10px;
+    }
+
+    &__text-1-2 {
+      font-size: 12px;
+    }
+
+    &__text-2-1 {
+      font-size: 10px;
+    }
+
+    &__text-2-2 {
+      font-size: 7px;
+    }
+
+    &__text-3-1 {
+      font-size: 10px
+    }
+
+    &__text-4-1 {
+      font-size: 10px
+    }
+
+    &__text-5-1 {
+      font-size: 10px
+    }
+  }
+}
+
+.image-animation {
+  animation: SlideIn 2s;
+  animation-iteration-count: initial;
+  animation-fill-mode: forwards;
+}
+
+.text-animation-1 {
+  animation: FadeIn 1s;
+  animation-delay: 2s;
+  animation-iteration-count: initial;
+  animation-fill-mode: forwards;
+}
+
+.text-animation-2 {
+  animation: FadeIn 1s;
+  animation-delay: 3s;
+  animation-iteration-count: initial;
+  animation-fill-mode: forwards;
+}
+
+.button-animation {
+  animation: FadeIn 1s;
+  animation-delay: 2s;
+  animation-iteration-count: initial;
+  animation-fill-mode: forwards;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
