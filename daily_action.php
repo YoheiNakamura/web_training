@@ -16,11 +16,17 @@ $message = CreateMessage($introducedId, $q1, $q2, $q3, $q4);
 
 InsertIntroduction($introducingId, $introducedId, $q1, $q2, $q3, $q4);
 
-
-
-
+SendMessage($introducingId, $message);
 
 DeleteOld();
+
+Remind();
+
+
+$message = GetTodaysMessage();
+
+SendMessage(0000, $message);
+
 
 //メンバーリストからランダムに一人選び出します。
 function RandomSelectId() {
@@ -69,6 +75,21 @@ function CreateQ3() {
 //Q1の質問を返します。
 function CreateQ4() {
     return "得意技は？";
+}
+
+//質問の回答を忘れていないかリマインドします。
+function Remind() {
+
+}
+
+//本日の他己紹介メッセージを取得します。
+function GetTodaysMessage() {
+
+}
+
+//指定したルームに指定したメッセージを送ります。
+function SendMessage($roomId, $message) {
+
 }
 
 ?>
